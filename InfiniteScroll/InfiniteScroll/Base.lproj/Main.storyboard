@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Wy-m0-Mao">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -64,6 +64,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.64122137404578" y="3.5211267605633805"/>
+        </scene>
+        <!--Story View Controller-->
+        <scene sceneID="3VA-G1-GJM">
+            <objects>
+                <viewController id="7Wy-m0-Mao" customClass="StoryViewController" customModule="InfiniteScroll" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1KK-8w-QrL">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bmt-V1-2ts">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StoryTableViewCell" rowHeight="85" id="oRW-yp-0tp" customClass="StoryTableViewCell" customModule="InfiniteScroll" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oRW-yp-0tp" id="PqP-91-umh">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJU-Z3-YoD">
+                                                    <rect key="frame" x="20" y="21" width="353" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jJU-Z3-YoD" firstAttribute="leading" secondItem="PqP-91-umh" secondAttribute="leadingMargin" id="OWy-Bk-YkH"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jJU-Z3-YoD" secondAttribute="trailing" id="iAz-Sz-beX"/>
+                                                <constraint firstItem="jJU-Z3-YoD" firstAttribute="top" secondItem="PqP-91-umh" secondAttribute="topMargin" constant="10" id="iDR-PW-tGv"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jJU-Z3-YoD" secondAttribute="bottom" constant="10" id="rP7-cA-mld"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="myLabel" destination="jJU-Z3-YoD" id="uVi-pC-WiF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="x4I-fp-I35"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bmt-V1-2ts" firstAttribute="top" secondItem="x4I-fp-I35" secondAttribute="top" id="03R-1n-pds"/>
+                            <constraint firstItem="x4I-fp-I35" firstAttribute="trailing" secondItem="bmt-V1-2ts" secondAttribute="trailing" id="2XP-Is-0WZ"/>
+                            <constraint firstItem="x4I-fp-I35" firstAttribute="bottom" secondItem="bmt-V1-2ts" secondAttribute="bottom" id="8v2-re-VEd"/>
+                            <constraint firstItem="bmt-V1-2ts" firstAttribute="leading" secondItem="x4I-fp-I35" secondAttribute="leading" id="olp-ee-ezg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="storyTableView" destination="bmt-V1-2ts" id="k8o-i8-Eu3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eUU-Y2-xsr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.58778625954199" y="680.98591549295782"/>
         </scene>
     </scenes>
     <resources>
