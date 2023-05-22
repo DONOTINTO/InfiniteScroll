@@ -8,7 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     @IBOutlet weak var myTableView: UITableView!
     let arr = Array<Int>(0...200)
     var actualData: [Int] = []
@@ -16,11 +15,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.prefetchDataSource = self
-        
         actualData = Array<Int>(0...20)
     }
     
@@ -28,7 +25,7 @@ class ViewController: UIViewController {
         // 함수가 호출될 때 마다 actualData에 10개씩 추가되는 로직
         guard let last = actualData.last else { return }
         
-        if (limit + 1) != actualData.count {
+        if limit != actualData.count - 1 {
             let start = last + 1
             var end = last + 10
             
@@ -54,8 +51,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
 
 extension ViewController: UITableViewDataSourcePrefetching {
