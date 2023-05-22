@@ -37,6 +37,11 @@ class StoryViewController: UIViewController {
             storyTableView.reloadData()
         }
     }
+    
+    func getBlogInfo(query: String) {
+        var baseURL = "https://dapi.kakao.com/v2/search/blog"
+        var Authorization = "KakaoAK b201e75e24f51413d5e1b8707ca8231a"
+    }
 }
 
 extension StoryViewController: UITableViewDelegate, UITableViewDataSource {
