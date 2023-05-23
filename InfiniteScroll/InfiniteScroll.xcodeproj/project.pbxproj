@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC012A702A1799660053074C /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC012A6F2A1799660053074C /* StoryViewController.swift */; };
+		AC012A722A179B0E0053074C /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC012A712A179B0E0053074C /* StoryTableViewCell.swift */; };
 		AC6C7E1D2A178EA3002D221F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C7E1C2A178EA3002D221F /* AppDelegate.swift */; };
 		AC6C7E1F2A178EA3002D221F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C7E1E2A178EA3002D221F /* SceneDelegate.swift */; };
 		AC6C7E212A178EA3002D221F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C7E202A178EA3002D221F /* ViewController.swift */; };
 		AC6C7E242A178EA3002D221F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6C7E222A178EA3002D221F /* Main.storyboard */; };
 		AC6C7E262A178EA4002D221F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6C7E252A178EA4002D221F /* Assets.xcassets */; };
 		AC6C7E292A178EA4002D221F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6C7E272A178EA4002D221F /* LaunchScreen.storyboard */; };
+		AC6C7E312A178F5D002D221F /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C7E302A178F5D002D221F /* MyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC012A6F2A1799660053074C /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
+		AC012A712A179B0E0053074C /* StoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
 		AC6C7E192A178EA3002D221F /* InfiniteScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6C7E1C2A178EA3002D221F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC6C7E1E2A178EA3002D221F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		AC6C7E252A178EA4002D221F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC6C7E282A178EA4002D221F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC6C7E2A2A178EA4002D221F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC6C7E302A178F5D002D221F /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +63,11 @@
 			isa = PBXGroup;
 			children = (
 				AC6C7E1C2A178EA3002D221F /* AppDelegate.swift */,
+				AC012A712A179B0E0053074C /* StoryTableViewCell.swift */,
 				AC6C7E1E2A178EA3002D221F /* SceneDelegate.swift */,
 				AC6C7E202A178EA3002D221F /* ViewController.swift */,
+				AC6C7E302A178F5D002D221F /* MyTableViewCell.swift */,
+				AC012A6F2A1799660053074C /* StoryViewController.swift */,
 				AC6C7E222A178EA3002D221F /* Main.storyboard */,
 				AC6C7E252A178EA4002D221F /* Assets.xcassets */,
 				AC6C7E272A178EA4002D221F /* LaunchScreen.storyboard */,
@@ -138,9 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC012A702A1799660053074C /* StoryViewController.swift in Sources */,
 				AC6C7E212A178EA3002D221F /* ViewController.swift in Sources */,
+				AC6C7E312A178F5D002D221F /* MyTableViewCell.swift in Sources */,
 				AC6C7E1D2A178EA3002D221F /* AppDelegate.swift in Sources */,
 				AC6C7E1F2A178EA3002D221F /* SceneDelegate.swift in Sources */,
+				AC012A722A179B0E0053074C /* StoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
