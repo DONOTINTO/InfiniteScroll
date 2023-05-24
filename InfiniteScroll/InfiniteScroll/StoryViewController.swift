@@ -21,6 +21,7 @@ class StoryViewController: UIViewController {
         storyTableView.prefetchDataSource = self
         storyList = story.components(separatedBy: " ")
         actualList.append(contentsOf: storyList[0...10])
+        getBlogInfo(query: "123")
     }
     
     func update() {
@@ -39,8 +40,25 @@ class StoryViewController: UIViewController {
     }
     
     func getBlogInfo(query: String) {
-        var baseURL = "https://dapi.kakao.com/v2/search/blog"
-        var Authorization = "KakaoAK b201e75e24f51413d5e1b8707ca8231a"
+        let baseURL = "https://dapi.kakao.com/v2/search/blog"
+        let Authorization = "KakaoAK b201e75e24f51413d5e1b8707ca8231a"
+        
+        var url = URL(string: baseURL)
+        url?.append(queryItems: [
+            URLQueryItem(name: "query", value: query)
+        ])
+        
+        guard let url = url else { return }
+        
+        var request = URLRequest(url: url)
+        request.setValue(Authorization, forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let response = response as? HTTPURLResponse else { return }
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            print(response.statusCode)
+        }.resume()
     }
 }
 
