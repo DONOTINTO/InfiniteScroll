@@ -6,8 +6,18 @@
 //
 
 import UIKit
+import SnapKit
 
 class StoryTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var myLabel: UILabel!
+    let myLabel = UILabel()
+    
+    func initialSetup() {
+        self.contentView.addSubview(myLabel)
+    }
+    
+    func makeUI() {
+        myLabel.snp.makeConstraints {
+            $0.edges.equalTo(contentView.snp.edges)
+        }
+    }
 }

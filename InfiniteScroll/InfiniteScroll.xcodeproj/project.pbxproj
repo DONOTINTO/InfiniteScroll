@@ -10,6 +10,7 @@
 		AC012A702A1799660053074C /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC012A6F2A1799660053074C /* StoryViewController.swift */; };
 		AC012A722A179B0E0053074C /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC012A712A179B0E0053074C /* StoryTableViewCell.swift */; };
 		AC4ED1382A1E4A48006215B4 /* Kakao.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4ED1372A1E4A48006215B4 /* Kakao.swift */; };
+		AC4ED13C2A1F9ED4006215B4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AC4ED13B2A1F9ED4006215B4 /* SnapKit */; };
 		AC6C7E1D2A178EA3002D221F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C7E1C2A178EA3002D221F /* AppDelegate.swift */; };
 		AC6C7E1F2A178EA3002D221F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C7E1E2A178EA3002D221F /* SceneDelegate.swift */; };
 		AC6C7E242A178EA3002D221F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6C7E222A178EA3002D221F /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC4ED13C2A1F9ED4006215B4 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +91,9 @@
 			dependencies = (
 			);
 			name = InfiniteScroll;
+			packageProductDependencies = (
+				AC4ED13B2A1F9ED4006215B4 /* SnapKit */,
+			);
 			productName = InfiniteScroll;
 			productReference = AC6C7E192A178EA3002D221F /* InfiniteScroll.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +122,9 @@
 				Base,
 			);
 			mainGroup = AC6C7E102A178EA3002D221F;
+			packageReferences = (
+				AC4ED13A2A1F9ED4006215B4 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = AC6C7E1A2A178EA3002D221F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -364,6 +372,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AC4ED13A2A1F9ED4006215B4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AC4ED13B2A1F9ED4006215B4 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC4ED13A2A1F9ED4006215B4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AC6C7E112A178EA3002D221F /* Project object */;
 }

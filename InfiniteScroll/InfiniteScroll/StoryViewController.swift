@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class StoryViewController: UIViewController {
     let storyTableView = UITableView()
@@ -16,10 +17,24 @@ class StoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialSetup()
+        makeUI()
+        
+    }
+    
+    func initialSetup() {
+        self.view.addSubview(storyTableView)
         storyTableView.delegate = self
         storyTableView.dataSource = self
         storyTableView.prefetchDataSource = self
+        storyTableView.register(StoryTableViewCell.self, forCellReuseIdentifier: "StoryTableViewCell")
         getBlogInfo(query: "123")
+    }
+    
+    func makeUI() {
+        storyTableView.snp.makeConstraints {
+            $0.edges.equalTo(view.snp.edges)
+        }
     }
     
     func update() {
@@ -83,6 +98,8 @@ extension StoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = storyTableView.dequeueReusableCell(withIdentifier: "StoryTableViewCell", for: indexPath) as? StoryTableViewCell else { return UITableViewCell() }
+        cell.initialSetup()
+        cell.makeUI()
         cell.myLabel.text = "\(storyList[indexPath.row])"
         
         return cell
