@@ -8,8 +8,8 @@
 import UIKit
 
 class StoryViewController: UIViewController {
-    @IBOutlet weak var storyTableView: UITableView!
-    var story = "The prince befriends a fox, who teaches him that the important things in life are visible only to the heart, that his time away from the rose makes the rose more special to him, and that love makes a person responsible for the beings that one loves. The little prince realizes that, even though there are many roses, his love for his rose makes her unique and that he is therefore responsible for her. Despite this revelation, he still feels very lonely because he is so far away from his rose. The prince ends his story by describing his encounters with two men, a railway switchman and a salesclerk."
+    let storyTableView = UITableView()
+    var story = ""
     var storyList: [String] = []
     var actualList: [String] = []
     var perPage = 10
