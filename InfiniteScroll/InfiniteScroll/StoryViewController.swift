@@ -83,6 +83,7 @@ class StoryViewController: UIViewController {
                 DispatchQueue.main.sync {
                     self.story = kakaoData[5].contents
                     self.storyList = self.story.components(separatedBy: " ")
+                    self.actualList.removeAll()
                     self.actualList.append(contentsOf: self.storyList[0...10])
                     self.storyTableView.reloadData()
                 }
@@ -121,5 +122,8 @@ extension StoryViewController: UISearchResultsUpdating {
 }
 
 extension StoryViewController: UISearchBarDelegate {
-    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let resultText = searchBar.text else { return }
+        self.getBlogInfo(query: resultText)
+    }
 }
