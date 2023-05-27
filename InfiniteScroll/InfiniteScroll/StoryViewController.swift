@@ -10,6 +10,7 @@ import SnapKit
 
 class StoryViewController: UIViewController {
     let storyTableView = UITableView()
+    let searchController = UISearchController(searchResultsController: nil)
     var story = ""
     var storyList: [String] = []
     var actualList: [String] = []
@@ -19,21 +20,23 @@ class StoryViewController: UIViewController {
         super.viewDidLoad()
         initialSetup()
         makeUI()
-        
     }
     
     func initialSetup() {
         self.view.addSubview(storyTableView)
+        self.navigationItem.searchController = searchController
         storyTableView.delegate = self
         storyTableView.dataSource = self
         storyTableView.prefetchDataSource = self
         storyTableView.register(StoryTableViewCell.self, forCellReuseIdentifier: "StoryTableViewCell")
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         getBlogInfo(query: "123")
     }
     
     func makeUI() {
         storyTableView.snp.makeConstraints {
-            $0.edges.equalTo(view.snp.edges)
+            $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
         }
     }
     
@@ -59,7 +62,7 @@ class StoryViewController: UIViewController {
         var url = URL(string: baseURL)
         url?.append(queryItems: [
             URLQueryItem(name: "query", value: query),
-            URLQueryItem(name: "size", value: "1")
+            URLQueryItem(name: "size", value: "20")
         ])
         
         guard let url = url else { return }
@@ -78,7 +81,7 @@ class StoryViewController: UIViewController {
                 let kakaoData = kakao.documents
                 
                 DispatchQueue.main.sync {
-                    self.story = kakaoData[0].contents
+                    self.story = kakaoData[5].contents
                     self.storyList = self.story.components(separatedBy: " ")
                     self.actualList.append(contentsOf: self.storyList[0...10])
                     self.storyTableView.reloadData()
@@ -110,4 +113,13 @@ extension StoryViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         update()
     }
+}
+
+extension StoryViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+    }
+}
+
+extension StoryViewController: UISearchBarDelegate {
+    
 }
