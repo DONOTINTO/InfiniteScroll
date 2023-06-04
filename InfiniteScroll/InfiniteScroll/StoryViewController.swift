@@ -15,6 +15,7 @@ class StoryViewController: UIViewController {
     var storyList: [String] = []
     var actualList: [String] = []
     var perPage = 10
+    var kakaoData: [Documents] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,11 +78,10 @@ class StoryViewController: UIViewController {
             do {
                 let decoder = JSONDecoder()
                 let kakao = try decoder.decode(Kakao.self, from: data)
-                let kakaoData = kakao.documents
+                self.kakaoData = kakao.documents
                 var blognameList: String = ""
                 DispatchQueue.main.sync {
-                    print(kakaoData)
-                    kakaoData.forEach {
+                    self.kakaoData.forEach {
                         blognameList.append("__ \($0.blogname)")
                     }
                     self.story = blognameList
@@ -100,7 +100,7 @@ class StoryViewController: UIViewController {
 
 extension StoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return actualList.count
+        return actualList.count - 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,8 +108,24 @@ extension StoryViewController: UITableViewDelegate, UITableViewDataSource {
         cell.initialSetup()
         cell.makeUI()
         cell.myLabel.text = "\(storyList[indexPath.row])"
+        let url = self.kakaoData[indexPath.row].thumbnail
+        let thumbnailURL = URL(string: url)
+        
+        DispatchQueue.global().async {
+            if let thumbnailURL = thumbnailURL {
+                let data = try? Data(contentsOf: thumbnailURL)
+                DispatchQueue.main.async {
+                    let thumbnail = UIImage(data: data!)
+                    cell.thumbnailImage.image = thumbnail
+                }
+            }
+        }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }
 
