@@ -24,8 +24,10 @@ class StoryViewController: UIViewController {
     }
     
     func initialSetup() {
+        self.view.backgroundColor = .white
         self.view.addSubview(storyTableView)
         self.navigationItem.searchController = searchController
+        storyTableView.backgroundColor = .white
         storyTableView.delegate = self
         storyTableView.dataSource = self
         storyTableView.prefetchDataSource = self
@@ -87,7 +89,11 @@ class StoryViewController: UIViewController {
                     self.story = blognameList
                     self.storyList = self.story.components(separatedBy: "__ ")
                     self.actualList.removeAll()
-                    self.actualList.append(contentsOf: self.storyList[0...10])
+                    if self.storyList.count < 10 {
+                        self.actualList.append(contentsOf: self.storyList[0...self.storyList.count - 1])
+                    } else {
+                        self.actualList.append(contentsOf: self.storyList[0...10])
+                    }
                     self.storyTableView.reloadData()
                 }
             } catch {
@@ -125,7 +131,10 @@ extension StoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let url = self.kakaoData[indexPath.row].url
+        let webVC = WebViewController()
+        webVC.viewURL = url
+        self.navigationController?.pushViewController(webVC, animated: true)
     }
 }
 
