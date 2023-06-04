@@ -31,7 +31,6 @@ class StoryViewController: UIViewController {
         storyTableView.register(StoryTableViewCell.self, forCellReuseIdentifier: "StoryTableViewCell")
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
-        getBlogInfo(query: "123")
     }
     
     func makeUI() {
@@ -62,7 +61,7 @@ class StoryViewController: UIViewController {
         var url = URL(string: baseURL)
         url?.append(queryItems: [
             URLQueryItem(name: "query", value: query),
-            URLQueryItem(name: "size", value: "20")
+            URLQueryItem(name: "size", value: "50")
         ])
         
         guard let url = url else { return }
@@ -79,10 +78,14 @@ class StoryViewController: UIViewController {
                 let decoder = JSONDecoder()
                 let kakao = try decoder.decode(Kakao.self, from: data)
                 let kakaoData = kakao.documents
-                
+                var blognameList: String = ""
                 DispatchQueue.main.sync {
-                    self.story = kakaoData[5].contents
-                    self.storyList = self.story.components(separatedBy: " ")
+                    print(kakaoData)
+                    kakaoData.forEach {
+                        blognameList.append("__ \($0.blogname)")
+                    }
+                    self.story = blognameList
+                    self.storyList = self.story.components(separatedBy: "__ ")
                     self.actualList.removeAll()
                     self.actualList.append(contentsOf: self.storyList[0...10])
                     self.storyTableView.reloadData()
