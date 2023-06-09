@@ -14,7 +14,8 @@ class StoryViewController: UIViewController {
     var story = ""
     var storyList: [String] = []
     var actualList: [String] = []
-    var perPage = 10
+    var totalPages = 10
+    var kakaoData: [Documents] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,6 @@ class StoryViewController: UIViewController {
         storyTableView.register(StoryTableViewCell.self, forCellReuseIdentifier: "StoryTableViewCell")
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
-        getBlogInfo(query: "123")
     }
     
     func makeUI() {
@@ -43,14 +43,14 @@ class StoryViewController: UIViewController {
     func update() {
         let start = actualList.count
         
-        if storyList.count - 1 != perPage {
-            perPage = perPage + 10
+        if storyList.count - 1 != totalPages {
+            totalPages = totalPages + 10
             
-            if perPage > storyList.count {
-                perPage = storyList.count - 1
+            if totalPages > storyList.count {
+                totalPages = storyList.count - 1
             }
             
-            actualList.append(contentsOf: storyList[start...perPage])
+            actualList.append(contentsOf: storyList[start...totalPages])
             storyTableView.reloadData()
         }
     }
@@ -62,7 +62,7 @@ class StoryViewController: UIViewController {
         var url = URL(string: baseURL)
         url?.append(queryItems: [
             URLQueryItem(name: "query", value: query),
-            URLQueryItem(name: "size", value: "20")
+            URLQueryItem(name: "size", value: "50")
         ])
         
         guard let url = url else { return }
@@ -78,11 +78,14 @@ class StoryViewController: UIViewController {
             do {
                 let decoder = JSONDecoder()
                 let kakao = try decoder.decode(Kakao.self, from: data)
-                let kakaoData = kakao.documents
-                
+                self.kakaoData = kakao.documents
+                var blognameList: String = ""
                 DispatchQueue.main.sync {
-                    self.story = kakaoData[5].contents
-                    self.storyList = self.story.components(separatedBy: " ")
+                    self.kakaoData.forEach {
+                        blognameList.append("__ \($0.blogname)")
+                    }
+                    self.story = blognameList
+                    self.storyList = self.story.components(separatedBy: "__ ")
                     self.actualList.removeAll()
                     self.actualList.append(contentsOf: self.storyList[0...10])
                     self.storyTableView.reloadData()
@@ -97,7 +100,7 @@ class StoryViewController: UIViewController {
 
 extension StoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return actualList.count
+        return actualList.count - 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -105,8 +108,24 @@ extension StoryViewController: UITableViewDelegate, UITableViewDataSource {
         cell.initialSetup()
         cell.makeUI()
         cell.myLabel.text = "\(storyList[indexPath.row])"
+        let url = self.kakaoData[indexPath.row].thumbnail
+        let thumbnailURL = URL(string: url)
+        
+        DispatchQueue.global().async {
+            if let thumbnailURL = thumbnailURL {
+                let data = try? Data(contentsOf: thumbnailURL)
+                DispatchQueue.main.async {
+                    let thumbnail = UIImage(data: data!)
+                    cell.thumbnailImage.image = thumbnail
+                }
+            }
+        }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }
 
