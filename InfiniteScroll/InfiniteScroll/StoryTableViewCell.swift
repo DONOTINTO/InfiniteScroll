@@ -15,6 +15,9 @@ class StoryTableViewCell: UITableViewCell {
     func initialSetup() {
         self.contentView.addSubview(thumbnailImage)
         self.contentView.addSubview(myLabel)
+        
+        self.contentView.backgroundColor = .white
+        self.myLabel.textColor = .black
     }
     
     func makeUI() {

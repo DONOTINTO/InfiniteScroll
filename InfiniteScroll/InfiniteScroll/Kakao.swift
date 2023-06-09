@@ -16,4 +16,5 @@ struct Documents: Decodable {
     var contents: String
     var title: String
     var thumbnail: String
+    var url: String
 }
