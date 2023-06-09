@@ -10,19 +10,14 @@ import WebKit
 import SnapKit
 
 class WebViewController: UIViewController {
-
     var mainView = UIView()
     let webView = WKWebView()
     var viewURL: String?
     
-    // override func loadView() {
-    //     self.view = webView
-    // }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(webView)
         
+        view.addSubview(webView)
         webView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
         }
