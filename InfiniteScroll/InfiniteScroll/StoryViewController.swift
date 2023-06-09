@@ -14,7 +14,7 @@ class StoryViewController: UIViewController {
     var story = ""
     var storyList: [String] = []
     var actualList: [String] = []
-    var totalPage = 10
+    var totalPages = 10
     var kakaoData: [Documents] = []
     
     override func viewDidLoad() {
@@ -43,14 +43,14 @@ class StoryViewController: UIViewController {
     func update() {
         let start = actualList.count
         
-        if storyList.count - 1 != totalPage {
-            totalPage = totalPage + 10
+        if storyList.count - 1 != totalPages {
+            totalPages = totalPages + 10
             
-            if totalPage > storyList.count {
-                totalPage = storyList.count - 1
+            if totalPages > storyList.count {
+                totalPages = storyList.count - 1
             }
             
-            actualList.append(contentsOf: storyList[start...totalPage])
+            actualList.append(contentsOf: storyList[start...totalPages])
             storyTableView.reloadData()
         }
     }
