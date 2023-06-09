@@ -6,21 +6,38 @@
 //
 
 import UIKit
+import SnapKit
 
 class StoryViewController: UIViewController {
-    @IBOutlet weak var storyTableView: UITableView!
-    let story = "The prince befriends a fox, who teaches him that the important things in life are visible only to the heart, that his time away from the rose makes the rose more special to him, and that love makes a person responsible for the beings that one loves. The little prince realizes that, even though there are many roses, his love for his rose makes her unique and that he is therefore responsible for her. Despite this revelation, he still feels very lonely because he is so far away from his rose. The prince ends his story by describing his encounters with two men, a railway switchman and a salesclerk."
+    let storyTableView = UITableView()
+    let searchController = UISearchController(searchResultsController: nil)
+    var story = ""
     var storyList: [String] = []
     var actualList: [String] = []
     var perPage = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialSetup()
+        makeUI()
+    }
+    
+    func initialSetup() {
+        self.view.addSubview(storyTableView)
+        self.navigationItem.searchController = searchController
         storyTableView.delegate = self
         storyTableView.dataSource = self
         storyTableView.prefetchDataSource = self
-        storyList = story.components(separatedBy: " ")
-        actualList.append(contentsOf: storyList[0...10])
+        storyTableView.register(StoryTableViewCell.self, forCellReuseIdentifier: "StoryTableViewCell")
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        getBlogInfo(query: "123")
+    }
+    
+    func makeUI() {
+        storyTableView.snp.makeConstraints {
+            $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
+        }
     }
     
     func update() {
@@ -37,6 +54,45 @@ class StoryViewController: UIViewController {
             storyTableView.reloadData()
         }
     }
+    
+    func getBlogInfo(query: String) {
+        let baseURL = "https://dapi.kakao.com/v2/search/blog"
+        let Authorization = "KakaoAK b201e75e24f51413d5e1b8707ca8231a"
+        
+        var url = URL(string: baseURL)
+        url?.append(queryItems: [
+            URLQueryItem(name: "query", value: query),
+            URLQueryItem(name: "size", value: "20")
+        ])
+        
+        guard let url = url else { return }
+        
+        var request = URLRequest(url: url)
+        request.setValue(Authorization, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let response = response as? HTTPURLResponse else { return }
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let decoder = JSONDecoder()
+                let kakao = try decoder.decode(Kakao.self, from: data)
+                let kakaoData = kakao.documents
+                
+                DispatchQueue.main.sync {
+                    self.story = kakaoData[5].contents
+                    self.storyList = self.story.components(separatedBy: " ")
+                    self.actualList.removeAll()
+                    self.actualList.append(contentsOf: self.storyList[0...10])
+                    self.storyTableView.reloadData()
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+            print(response.statusCode)
+        }.resume()
+    }
 }
 
 extension StoryViewController: UITableViewDelegate, UITableViewDataSource {
@@ -46,6 +102,8 @@ extension StoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = storyTableView.dequeueReusableCell(withIdentifier: "StoryTableViewCell", for: indexPath) as? StoryTableViewCell else { return UITableViewCell() }
+        cell.initialSetup()
+        cell.makeUI()
         cell.myLabel.text = "\(storyList[indexPath.row])"
         
         return cell
@@ -55,5 +113,17 @@ extension StoryViewController: UITableViewDelegate, UITableViewDataSource {
 extension StoryViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         update()
+    }
+}
+
+extension StoryViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+    }
+}
+
+extension StoryViewController: UISearchBarDelegate {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let resultText = searchBar.text else { return }
+        self.getBlogInfo(query: resultText)
     }
 }

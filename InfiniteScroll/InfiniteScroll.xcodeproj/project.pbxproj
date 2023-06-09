@@ -9,27 +9,26 @@
 /* Begin PBXBuildFile section */
 		AC012A702A1799660053074C /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC012A6F2A1799660053074C /* StoryViewController.swift */; };
 		AC012A722A179B0E0053074C /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC012A712A179B0E0053074C /* StoryTableViewCell.swift */; };
+		AC4ED1382A1E4A48006215B4 /* Kakao.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4ED1372A1E4A48006215B4 /* Kakao.swift */; };
+		AC4ED13C2A1F9ED4006215B4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AC4ED13B2A1F9ED4006215B4 /* SnapKit */; };
 		AC6C7E1D2A178EA3002D221F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C7E1C2A178EA3002D221F /* AppDelegate.swift */; };
 		AC6C7E1F2A178EA3002D221F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C7E1E2A178EA3002D221F /* SceneDelegate.swift */; };
-		AC6C7E212A178EA3002D221F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C7E202A178EA3002D221F /* ViewController.swift */; };
 		AC6C7E242A178EA3002D221F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6C7E222A178EA3002D221F /* Main.storyboard */; };
 		AC6C7E262A178EA4002D221F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6C7E252A178EA4002D221F /* Assets.xcassets */; };
 		AC6C7E292A178EA4002D221F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6C7E272A178EA4002D221F /* LaunchScreen.storyboard */; };
-		AC6C7E312A178F5D002D221F /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C7E302A178F5D002D221F /* MyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC012A6F2A1799660053074C /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		AC012A712A179B0E0053074C /* StoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
+		AC4ED1372A1E4A48006215B4 /* Kakao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kakao.swift; sourceTree = "<group>"; };
 		AC6C7E192A178EA3002D221F /* InfiniteScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6C7E1C2A178EA3002D221F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC6C7E1E2A178EA3002D221F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AC6C7E202A178EA3002D221F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC6C7E232A178EA3002D221F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC6C7E252A178EA4002D221F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC6C7E282A178EA4002D221F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC6C7E2A2A178EA4002D221F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC6C7E302A178F5D002D221F /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC4ED13C2A1F9ED4006215B4 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,11 +63,10 @@
 			isa = PBXGroup;
 			children = (
 				AC6C7E1C2A178EA3002D221F /* AppDelegate.swift */,
-				AC012A712A179B0E0053074C /* StoryTableViewCell.swift */,
 				AC6C7E1E2A178EA3002D221F /* SceneDelegate.swift */,
-				AC6C7E202A178EA3002D221F /* ViewController.swift */,
-				AC6C7E302A178F5D002D221F /* MyTableViewCell.swift */,
 				AC012A6F2A1799660053074C /* StoryViewController.swift */,
+				AC012A712A179B0E0053074C /* StoryTableViewCell.swift */,
+				AC4ED1372A1E4A48006215B4 /* Kakao.swift */,
 				AC6C7E222A178EA3002D221F /* Main.storyboard */,
 				AC6C7E252A178EA4002D221F /* Assets.xcassets */,
 				AC6C7E272A178EA4002D221F /* LaunchScreen.storyboard */,
@@ -92,6 +91,9 @@
 			dependencies = (
 			);
 			name = InfiniteScroll;
+			packageProductDependencies = (
+				AC4ED13B2A1F9ED4006215B4 /* SnapKit */,
+			);
 			productName = InfiniteScroll;
 			productReference = AC6C7E192A178EA3002D221F /* InfiniteScroll.app */;
 			productType = "com.apple.product-type.application";
@@ -120,6 +122,9 @@
 				Base,
 			);
 			mainGroup = AC6C7E102A178EA3002D221F;
+			packageReferences = (
+				AC4ED13A2A1F9ED4006215B4 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = AC6C7E1A2A178EA3002D221F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -148,8 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC012A702A1799660053074C /* StoryViewController.swift in Sources */,
-				AC6C7E212A178EA3002D221F /* ViewController.swift in Sources */,
-				AC6C7E312A178F5D002D221F /* MyTableViewCell.swift in Sources */,
+				AC4ED1382A1E4A48006215B4 /* Kakao.swift in Sources */,
 				AC6C7E1D2A178EA3002D221F /* AppDelegate.swift in Sources */,
 				AC6C7E1F2A178EA3002D221F /* SceneDelegate.swift in Sources */,
 				AC012A722A179B0E0053074C /* StoryTableViewCell.swift in Sources */,
@@ -304,7 +308,6 @@
 				INFOPLIST_FILE = InfiniteScroll/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -332,7 +335,6 @@
 				INFOPLIST_FILE = InfiniteScroll/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -370,6 +372,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AC4ED13A2A1F9ED4006215B4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AC4ED13B2A1F9ED4006215B4 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC4ED13A2A1F9ED4006215B4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AC6C7E112A178EA3002D221F /* Project object */;
 }
